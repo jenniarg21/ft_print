@@ -6,7 +6,7 @@
 #    By: jargote <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/06 03:43:21 by jargote           #+#    #+#              #
-#    Updated: 2017/03/20 00:51:20 by jargote          ###   ########.fr        #
+#    Updated: 2017/03/20 01:32:41 by jargote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ all:		$(NAME)
 
 $(NAME):	$(SRCS)
 	make all -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) -c $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS) $(LIBFT)
 	ar rvs $(NAME) $(LIBFT) $(OBJS)
 
 clean:
