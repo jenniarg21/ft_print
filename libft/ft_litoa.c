@@ -1,66 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_litoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 23:27:13 by jargote           #+#    #+#             */
-/*   Updated: 2017/03/23 18:26:46 by jargote          ###   ########.fr       */
+/*   Updated: 2016/11/15 12:12:31 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_setnbr(char *num, int count, int n, int base)
+static void		ft_setnbr(char *num, int count, long int n)
 {
-	unsigned int	nbr;
-	int				neg;
+	unsigned long int	nbr;
+	int					neg;
 
 	num[count] = '\0';
-	neg = ft_isneg(n);
+	neg = n < 0;
 	if (neg)
 	{
-		if (base == 10)
-		{
-			num[0] = '-';
-			nbr = n * -1;
-		}
-		else
-		{
-			neg = 0;
-			nbr = UINT_MAX + n + 1;
-		}
+		num[0] = '-';
+		nbr = n * -1;
 	}
 	else
 		nbr = n;
 	while ((count > 0 && !neg) || (count > 1 && neg))
 	{
 		count--;
-		if ((nbr % base) < 10)
-			num[count] = (nbr % base) + 48;
-		else
-			num[count] = (nbr % base) - 10 + 65;
-		nbr /= base;
+		num[count] = (nbr % 10) + 48;
+		nbr /= 10;
 	}
 }
 
-char			*ft_itoabase(int n, int base)
+char			*ft_litoa(long int n)
 {
-	int				count;
-	char			*num;
-	unsigned int	nbr;
+	int					count;
+	char				*num;
+	unsigned long int	nbr;
 
 	count = 0;
-	if (ft_isneg(n))
+	if (n < 0)
 	{
-		if (base == 10)
-		{
-			count = 1;
-			nbr = n * -1;
-		}
-		else
-			nbr = UINT_MAX + n + 1;
+		count = 1;
+		nbr = n * -1;
 	}
 	else
 		nbr = n;
@@ -68,11 +52,11 @@ char			*ft_itoabase(int n, int base)
 		count++;
 	while (nbr > 0)
 	{
-		nbr /= base;
+		nbr /= 10;
 		count++;
 	}
 	if (!(num = (char *)malloc(count + 1)))
 		return (NULL);
-	ft_setnbr(num, count, n, base);
+	ft_setnbr(num, count, n);
 	return (num);
 }

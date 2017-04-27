@@ -6,12 +6,24 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 11:53:21 by jargote           #+#    #+#             */
-/*   Updated: 2017/03/16 23:11:37 by jargote          ###   ########.fr       */
+/*   Updated: 2017/03/21 23:03:33 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# define UINT_MAX 4294967295
+# define LONG_MIN (-9223372036854775808)
+# define LONG_MAX 9223372036854775807
+# define ULLONG_MAX 18446744073709551615
+# define ULONG_MAX 4294967295
+# define SINT_MIN (-32768)
+# define SINT_MAX 32767
+# define USHRT_MAX 65535
+# define CHAR_MIN (-128)
+# define CHAR_MAX 127
+# define UCHAR_MAX 255
 
 # include <string.h>
 # include <stdlib.h>
@@ -94,5 +106,19 @@ void				ft_printbits(unsigned char octet);
 int					ft_memchrlen(char *s, int c, size_t n);
 int					get_next_line(const int fd, char **line);
 char				*ft_itoabase(int n, int base);
+char				*ft_uitoa(unsigned int n);
+char				*ft_litoa(long int n);
+char				*ft_ulitoa(unsigned long int n);
+char				*ft_ulitoabase(unsigned long int n, int base);
+char				*ft_litoabase(long int n, int base);
+char				*ft_sitoabase(short int n, int base);
+char				*ft_citoabase(int n, int base);
+char				*ft_usitoa(unsigned short int n);
+char				*ft_ucitoa(unsigned char n);
+char				*ft_imtitoabase(intmax_t n, int base);
+char				*ft_uimtitoabase(uintmax_t n, int base);
+char				*ft_ustitoabase(size_t n, int base);
+char				*ft_usitoabase(unsigned short int n, int base);
+char				*ft_ucitoabase(unsigned char n, int base);
 
 #endif

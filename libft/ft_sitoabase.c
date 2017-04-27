@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_sitoabase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static void		ft_setnbr(char *num, int count, int n, int base)
+static void		ft_setnbr(char *num, int count, short int n, int base)
 {
-	unsigned int	nbr;
+	int				nbr;
 	int				neg;
 
 	num[count] = '\0';
@@ -29,7 +29,7 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 		else
 		{
 			neg = 0;
-			nbr = UINT_MAX + n + 1;
+			nbr = SINT_MAX + n + 1;
 		}
 	}
 	else
@@ -45,11 +45,11 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 	}
 }
 
-char			*ft_itoabase(int n, int base)
+char			*ft_sitoabase(short int n, int base)
 {
 	int				count;
 	char			*num;
-	unsigned int	nbr;
+	int				nbr;
 
 	count = 0;
 	if (ft_isneg(n))
@@ -60,7 +60,7 @@ char			*ft_itoabase(int n, int base)
 			nbr = n * -1;
 		}
 		else
-			nbr = UINT_MAX + n + 1;
+			nbr = SINT_MAX + n + 1;
 	}
 	else
 		nbr = n;

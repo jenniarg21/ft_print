@@ -6,7 +6,7 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 03:43:04 by jargote           #+#    #+#             */
-/*   Updated: 2017/03/20 00:17:47 by jargote          ###   ########.fr       */
+/*   Updated: 2017/03/21 22:25:46 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,41 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-typedef union		s_type
+typedef struct		s_flags
 {
-	char			c;
-	char			*str;
-	void			*p;
-	int				i;
-	unsigned int	ui;
-	float			f;
-	long			l;
-	short			s;
-	long long		ll;
+	int	pound;
+	int	zero;
+	int	neg;
+	int	sp;
+	int	pos;
+}		t_flags;
+
+typedef struct		s_format
+{
+	char	specifier;
+	int		width;
+	int		precision;
+	char	*length;
+	t_flags flags;
+}			t_format;
+
+typedef union		u_type
+{
+	char				c;
+	char				*str;
+	wchar_t				wc;
+	void				*p;
+	int					i;
+	long int			li;
+	unsigned int		ui;
+	unsigned long int	uli;
+	intmax_t			imt;
+	uintmax_t			uimt;
+	size_t				st;
+	float				f;
+	long				l;
+	short				s;
+	long long			ll;
 
 }					t_type;
 
@@ -38,11 +62,15 @@ int		ft_printf(const char * format, ...);
 void	err(void);
 void	ft_putuint(unsigned int n);
 char	*lowercase(char *str);
-void	putspaces(int n);
-void	find_specifier(char specifier, va_list ap, int width, int precision);
+void	putnchar(int n, char c);
+int		apply_flags(char *str, t_flags f, int width, int precision, char s);
+int		apply_flags_str(char *str, t_flags f, int widht, int precision, char s);
+int		find_specifier(t_format f, va_list ap);
 int		count_isdigit(char *str);
 int		find_number(char *fmt, int **count);
-void	find_type(char *fmt, int *i, va_list ap);
+int		find_type(char *fmt, int *i, va_list ap);
+t_flags		find_flags(char *fmt, int *i);
+char		*fine_length(char* fmt, int *i);
 
 
 #endif

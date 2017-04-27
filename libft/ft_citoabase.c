@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_citoabase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,14 +14,19 @@
 
 static void		ft_setnbr(char *num, int count, int n, int base)
 {
-	unsigned int	nbr;
+	int				nbr;
 	int				neg;
 
 	num[count] = '\0';
 	neg = ft_isneg(n);
 	if (neg)
 	{
-		if (base == 10)
+		if (n < CHAR_MIN)
+		{
+			nbr = (CHAR_MIN - n) - 1 + CHAR_MAX;
+			neg = 0;
+		}
+		else if (base == 10)
 		{
 			num[0] = '-';
 			nbr = n * -1;
@@ -31,6 +36,12 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 			neg = 0;
 			nbr = UINT_MAX + n + 1;
 		}
+	}
+	else if (n > CHAR_MAX)
+	{
+		num[0] = '-';
+		nbr = ((n - CHAR_MAX) - 1 + CHAR_MIN) * -1;
+		neg = 1;
 	}
 	else
 		nbr = n;
@@ -45,22 +56,29 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 	}
 }
 
-char			*ft_itoabase(int n, int base)
+char			*ft_citoabase(int n, int base)
 {
 	int				count;
 	char			*num;
-	unsigned int	nbr;
+	int				nbr;
 
 	count = 0;
 	if (ft_isneg(n))
 	{
-		if (base == 10)
+		if (n < CHAR_MIN)
+			nbr = (CHAR_MIN - n) - 1 + CHAR_MAX;
+		else if (base == 10)
 		{
 			count = 1;
 			nbr = n * -1;
 		}
 		else
 			nbr = UINT_MAX + n + 1;
+	}
+	else if (n > CHAR_MAX)
+	{
+		nbr = ((n - CHAR_MAX) - 1 + CHAR_MIN) * -1;
+		count = 1;
 	}
 	else
 		nbr = n;

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_imtitoabase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-static void		ft_setnbr(char *num, int count, int n, int base)
+static void		ft_setnbr(char *num, int count, intmax_t n, int base)
 {
-	unsigned int	nbr;
-	int				neg;
+	uintmax_t			nbr;
+	int						neg;
 
 	num[count] = '\0';
-	neg = ft_isneg(n);
+	neg = n < 0;
 	if (neg)
 	{
 		if (base == 10)
@@ -29,7 +29,7 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 		else
 		{
 			neg = 0;
-			nbr = UINT_MAX + n + 1;
+			nbr = INTMAX_MAX + n + 1;
 		}
 	}
 	else
@@ -45,14 +45,14 @@ static void		ft_setnbr(char *num, int count, int n, int base)
 	}
 }
 
-char			*ft_itoabase(int n, int base)
+char			*ft_imtitoabase(intmax_t n, int base)
 {
-	int				count;
-	char			*num;
-	unsigned int	nbr;
+	int						count;
+	char					*num;
+	uintmax_t			nbr;
 
 	count = 0;
-	if (ft_isneg(n))
+	if (n < 0)
 	{
 		if (base == 10)
 		{
@@ -60,7 +60,7 @@ char			*ft_itoabase(int n, int base)
 			nbr = n * -1;
 		}
 		else
-			nbr = UINT_MAX + n + 1;
+			nbr = INTMAX_MAX + n + 1;
 	}
 	else
 		nbr = n;
