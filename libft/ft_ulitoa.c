@@ -64,7 +64,7 @@ char		*ft_ulitoa(unsigned long int n)
 	nbr = (char *)malloc(count + 1);
 	digit = (char *)malloc(2);
 	ft_bzero(digit, 2);
-	//ft_bzero(t);
+	ft_bzero(nbr, 2);
 	if (n == 0)
 	{
 		nbr[0] = '0';
