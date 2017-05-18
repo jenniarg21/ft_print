@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_header.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 11:53:21 by jargote           #+#    #+#             */
-/*   Updated: 2017/03/21 23:03:33 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/16 21:14:24 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ int					ft_ispos(int n);
 void				ft_printbits(unsigned char octet);
 int					ft_memchrlen(char *s, int c, size_t n);
 int					get_next_line(const int fd, char **line);
+int					count_isdigit(char *str);
+char				*lowercase(char *str);
+void				putnchar(int n, char c);
+void				ft_putuint(unsigned int n);
+char				*strreverse(char *str);
+char				*strinconce(char *s, char *str, int count);
 char				*ft_itoabase(int n, int base);
 char				*ft_uitoa(unsigned int n);
 char				*ft_litoa(long int n);

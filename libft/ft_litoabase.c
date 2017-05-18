@@ -1,62 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_litoabase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 23:27:13 by jargote           #+#    #+#             */
-/*   Updated: 2017/03/23 18:26:46 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/16 20:54:20 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_setnbr(char *num, int count, long int n, int base)
+static unsigned long long	sfn(char *num, long int n, int base, int *neg)
 {
-	unsigned long long int	nbr;
-	int						neg;
+	unsigned long long	nbr;
+
+	if (base == 10)
+	{
+		num[0] = '-';
+		nbr = n * -1;
+	}
+	else
+	{
+		*neg = 0;
+		nbr = ULONG_MAX + n + 1;
+	}
+	return (nbr);
+}
+
+static void					ft_setnbr(char *num, int count, long int n, int b)
+{
+	unsigned long long	nbr;
+	int					neg;
 
 	num[count] = '\0';
 	neg = n < 0;
 	if (neg)
-	{
-		if (base == 10)
-		{
-			num[0] = '-';
-			nbr = n * -1;
-		}
-		else
-		{
-			neg = 0;
-			nbr = ULONG_MAX + n + 1;
-		}
-	}
+		nbr = sfn(num, n, b, &neg);
 	else
 		nbr = n;
 	while ((count > 0 && !neg) || (count > 1 && neg))
 	{
 		count--;
-		if ((nbr % base) < 10)
-			num[count] = (nbr % base) + 48;
+		if ((nbr % b) < 10)
+			num[count] = (nbr % b) + 48;
 		else
-			num[count] = (nbr % base) - 10 + 65;
-		nbr /= base;
+			num[count] = (nbr % b) - 10 + 65;
+		nbr /= b;
 	}
 }
 
-char			*ft_litoabase(long int n, int base)
+static void					find_length(long int n, int base, int *count)
 {
-	int						count;
-	char					*num;
-	unsigned long long int	nbr;
+	unsigned long long	nbr;
 
-	count = 0;
 	if (n < 0)
 	{
 		if (base == 10)
 		{
-			count = 1;
+			*count = 1;
 			nbr = n * -1;
 		}
 		else
@@ -65,12 +68,21 @@ char			*ft_litoabase(long int n, int base)
 	else
 		nbr = n;
 	if (n == 0)
-		count++;
+		*count += 1;
 	while (nbr > 0)
 	{
 		nbr /= base;
-		count++;
+		*count += 1;
 	}
+}
+
+char						*ft_litoabase(long int n, int base)
+{
+	int		count;
+	char	*num;
+
+	count = 0;
+	find_length(n, base, &count);
 	if (!(num = (char *)malloc(count + 1)))
 		return (NULL);
 	ft_setnbr(num, count, n, base);

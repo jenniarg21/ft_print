@@ -6,7 +6,7 @@
 #    By: jargote <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/31 11:03:52 by jargote           #+#    #+#              #
-#    Updated: 2017/03/21 22:48:18 by jargote          ###   ########.fr        #
+#    Updated: 2017/05/16 21:15:20 by jargote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,12 @@ SRCS	=	ft_memset.c \
 			ft_printbits.c \
 			ft_memchrlen.c \
 			get_next_line.c \
+			count_isdigit.c \
+			lowercase.c \
+			putnchar.c \
+			ft_putuint.c \
+			strreverse.c \
+			strinconce.c \
 			ft_itoabase.c \
 			ft_uitoa.c \
 			ft_litoa.c \
