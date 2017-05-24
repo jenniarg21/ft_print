@@ -6,7 +6,7 @@
 /*   By: jargote <jargote@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 23:20:30 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/17 23:47:24 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/23 16:57:36 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static char		*apply_precision(char *str, t_format *f)
 	char	*t;
 
 	if (f->prec == -1)
-		f->prec = 0;
-	t = ft_strsub(str, 0, f->prec);
+		t = ft_strsub(str, 0, 0);
+	else
+		t = ft_strsub(str, 0, f->prec);
 	return (t);
 }
 
@@ -53,7 +54,7 @@ int				apply_flags_str(char **s, t_format f)
 	if (!f.flags.neg)
 		ft_putstr(str);
 	len += ft_strlen(str);
-	if (f.prec > 0)
+	if (f.prec == -1 || f.prec > 0)
 		ft_strdel(&str);
 	*s = str;
 	return (len);

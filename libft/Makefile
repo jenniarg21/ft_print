@@ -6,7 +6,7 @@
 #    By: jargote <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/31 11:03:52 by jargote           #+#    #+#              #
-#    Updated: 2017/05/16 21:15:20 by jargote          ###   ########.fr        #
+#    Updated: 2017/05/20 21:03:54 by jargote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRCS	=	ft_memset.c \
 			strinconce.c \
 			ft_itoabase.c \
 			ft_uitoa.c \
+			ft_uitoabase.c \
 			ft_litoa.c \
 			ft_ulitoa.c \
 			ft_ulitoabase.c \
@@ -99,7 +100,10 @@ SRCS	=	ft_memset.c \
 			ft_ucitoa.c \
 			ft_imtitoabase.c \
 			ft_usitoabase.c \
-			ft_ucitoabase.c
+			ft_ucitoabase.c \
+			exponent.c \
+			ctowc.c \
+			charhextoi.c
 
 OBJS	=	$(SRCS:.c=.o)
 
