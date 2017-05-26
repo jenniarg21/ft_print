@@ -6,7 +6,7 @@
 #    By: jargote <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/06 03:43:21 by jargote           #+#    #+#              #
-#    Updated: 2017/05/23 16:38:13 by jargote          ###   ########.fr        #
+#    Updated: 2017/05/25 22:56:08 by jargote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRCS		=	ft_printf.c \
 				pointer.c \
 				string.c \
 				u_integer.c \
-				catch_other.c
+				binary.c \
+				catch_other.c \
+				apply_color.c
 OBJS		=	$(SRCS:.c=.o)
 
 all:		$(NAME)
