@@ -6,7 +6,7 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 09:08:32 by jargote           #+#    #+#             */
-/*   Updated: 2016/11/11 15:49:41 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/25 17:31:02 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t		ft_strlen(const char *s)
 	size_t		len;
 
 	len = 0;
-	while (s[len] != '\0')
+	while (s && s[len] != '\0')
 		len++;
 	return (len);
 }

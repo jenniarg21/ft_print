@@ -6,7 +6,7 @@
 /*   By: jargote <jargote@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 16:39:54 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/20 21:26:23 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/24 17:55:56 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void			print_char(t_format f, unsigned int *wc, int len, char c)
 	if (f.spec == 'C' || (f.length && f.length[0] == 'l'))
 	{
 		i = -1;
-		while (len-- > 0)
-			ft_putchar(wc[++i]);
+		while (++i < len)
+			ft_putchar(wc[i]);
 	}
 	else
 		ft_putchar(c);

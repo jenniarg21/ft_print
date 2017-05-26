@@ -6,7 +6,7 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 22:34:55 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/16 17:04:28 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/24 19:01:44 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ char		*ft_uitoa(unsigned int n)
 
 	count = 1;
 	nbr = (char *)malloc(count + 1);
-	digit = (char *)malloc(2);
-	ft_bzero(digit, 2);
 	ft_bzero(nbr, 2);
 	if (n == 0)
 	{
 		nbr[0] = '0';
 		return (nbr);
 	}
+	digit = (char *)malloc(2);
+	ft_bzero(digit, 2);
 	while (n > 0)
 	{
 		digit[0] = (n % 10) + 48;

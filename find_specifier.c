@@ -6,13 +6,13 @@
 /*   By: jargote <jargote@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/16 13:34:15 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/18 16:47:03 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/26 00:19:20 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	find_specifier(t_format f, va_list ap)
+static int	specifier(t_format f, va_list ap)
 {
 	int		len;
 
@@ -34,7 +34,19 @@ int	find_specifier(t_format f, va_list ap)
 		len = u_integer(f, ap);
 	else if (f.spec == 'p')
 		len = pointer(f, ap);
+	else if (f.spec == 'b')
+		len = binary(f, ap);
 	else
 		len = catch_other(f);
+	return (len);
+}
+
+int			find_specifier(t_format f, va_list ap)
+{
+	int		len;
+
+	len = specifier(f, ap);
+	if (len == -1)
+		err(ap);
 	return (len);
 }

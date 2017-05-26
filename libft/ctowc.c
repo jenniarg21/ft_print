@@ -6,7 +6,7 @@
 /*   By: jargote <jargote@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 20:39:25 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/23 17:44:41 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/24 17:51:57 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ unsigned int	*ctowc(unsigned int ui, int *size)
 
 	len = utf8len(ui);
 	*size = len;
-	if (!(wc = (unsigned int *)malloc(len)))
+	if (!(wc = (unsigned int *)malloc(sizeof(unsigned int) * len)))
 		return (NULL);
 	begblen = 7 - len;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 22:34:55 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/16 17:25:52 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/24 18:59:47 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ char		*ft_ulitoabase(unsigned long int n, int base)
 	char			*nbr;
 
 	count = 1;
-	nbr = (char *)malloc(count + 1);
-	digit = (char *)malloc(2);
-	ft_bzero(digit, 2);
+	nbr = (char *)malloc(2);
 	ft_bzero(nbr, 2);
 	if (n == 0)
 	{
 		nbr[0] = '0';
 		return (nbr);
 	}
+	digit = (char *)malloc(2);
+	ft_bzero(digit, 2);
 	while (n > 0)
 	{
 		digit[0] = calc_digit(n, base);

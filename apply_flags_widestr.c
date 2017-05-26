@@ -6,7 +6,7 @@
 /*   By: jargote <jargote@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 23:20:30 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/23 16:11:48 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/25 15:54:27 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ static int		print_widestr(t_widestr *ws, int prec)
 	int		plen;
 	int		currlen;
 	int		i;
-	int		j;
 
 	plen = 0;
 	currlen = 0;
-	i = -1;
 	if (prec == -1)
 		return (0);
 	while (ws)
@@ -64,9 +62,9 @@ static int		print_widestr(t_widestr *ws, int prec)
 		currlen += ws->len;
 		if (prec == 0 || prec >= currlen)
 		{
-			j = -1;
-			while (++j < ws->len)
-				ft_putchar(ws->wc[j]);
+			i = -1;
+			while (++i < ws->len)
+				ft_putchar(ws->wc[i]);
 			plen += ws->len;
 			ws = ws->next;
 		}
@@ -89,10 +87,12 @@ static void		apply_width(t_format *f, int wlen, int *len)
 	*len += f->width;
 }
 
-int				apply_flags_widestr(t_widestr *ws, t_format f)
+int				apply_flags_widestr(t_widestr *widestr, t_format f)
 {
-	int		len;
+	t_widestr	*ws;
+	int			len;
 
+	ws = widestr;
 	len = 0;
 	f.width = calc_width_adjust(ws, f.width, f.prec);
 	if (f.flags.neg)

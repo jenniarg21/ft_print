@@ -6,7 +6,7 @@
 /*   By: jargote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 03:43:04 by jargote           #+#    #+#             */
-/*   Updated: 2017/05/23 16:39:12 by jargote          ###   ########.fr       */
+/*   Updated: 2017/05/25 23:46:48 by jargote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ typedef union	u_type
 }				t_type;
 
 int				ft_printf(const char *format, ...);
-void			err(void);
+void			err(va_list ap);
 int				apply_flags(char *str, t_format f);
 int				print_padding_and_nbr(char *s, t_format f, int pad, int p_zero);
 int				apply_flags_str(char **s, t_format f);
 int				apply_flags_widestr(t_widestr *ws, t_format f);
-t_widestr		*init_widestr(void);
+t_widestr		*init_widestr(wchar_t ws);
 void			free_widestr(t_widestr **ws);
 int				find_specifier(t_format f, va_list ap);
 int				find_number(char *fmt, int **count);
@@ -88,11 +88,13 @@ int				octal(t_format f, va_list ap);
 int				percent(t_format f);
 int				pointer(t_format f, va_list ap);
 int				string(t_format f, va_list ap);
+int				binary(t_format f, va_list ap);
 int				u_integer(t_format f, va_list ap);
 int				catch_other(t_format f);
 char			*ui_longs(va_list ap, int base);
 char			*ui_j_uintmax_t(va_list ap, int base);
 char			*ui_z_size_t(va_list ap, int base);
 char			*ui_hhh_short_char(unsigned int ui, t_format f, int base);
+int				apply_color(char *f, int *i);
 
 #endif
